@@ -5,7 +5,7 @@
  */
 'use strict'
 import React, { Component } from 'react';
-import { ActivityIndicator, FlatList, Image, Text, TextInput, TouchableNativeFeedback, TouchableOpacity, View, Modal } from 'react-native';
+import { ActivityIndicator, FlatList, Image, Text, TextInput, TouchableOpacity, View, Modal } from 'react-native';
 
 //lib
 import _ from 'lodash';
@@ -23,6 +23,7 @@ import { formatLongText } from '../../../common/utility';
 //styles
 import { listNotifyStyle } from '../../../assets/styles/ListNotifyStyle';
 import { filterStyle } from '../../../assets/styles/FilterStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 //images
 const uriEmptyDataIcon = require('../../../assets/images/empty_data.png');
@@ -102,7 +103,7 @@ class ListNotifyFiltered extends BaseComponent {
     //hiển thị từng dòng thông báo
     renderItem = ({ item }) => {
         return (
-            <TouchableNativeFeedback onPress={() => this.navigateToDetail(item.ID)}>
+            <TouchableOpacity onPress={() => this.navigateToDetail(item.ID)}>
                 <ListItem
                     leftIcon={
                         <View style={[listNotifyStyle.circleTitle, item.IS_READ === true ? listNotifyStyle.circleTitleRead : listNotifyStyle.circleTitleNotRead]}>
@@ -123,7 +124,7 @@ class ListNotifyFiltered extends BaseComponent {
                         </Text>
                     }
                 />
-            </TouchableNativeFeedback>
+            </TouchableOpacity>
         );
     }
 
@@ -172,7 +173,7 @@ class ListNotifyFiltered extends BaseComponent {
                             onEndReachedThreshold={0.1}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={this.renderItem}
-                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={'large'} animating color={this.defaultMainheaderRightIconColor} /> : null}
+                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={activityIndicatorSizeResponsive} animating color={this.defaultMainheaderRightIconColor} /> : null}
                             data={this.state.data}
 
                             ListEmptyComponent={() =>

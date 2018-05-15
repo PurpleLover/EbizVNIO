@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import {
     Alert, AsyncStorage, Image, ImageBackground, ScrollView,
-    Text, TouchableNativeFeedback, View
+    Text, View, TouchableOpacity
 } from 'react-native';
 
 import { List, ListItem, Badge } from 'react-native-elements';
@@ -148,10 +148,10 @@ class SideBar extends BaseComponent {
             <View style={this.defaultStyle.container}>
                 <View style={sideBarStyle.header}>
                     <View style={sideBarStyle.headerNavigator}>
-                        {/* <TouchableNativeFeedback background={TouchableNativeFeedback.SelectableBackground()}
+                        {/* <TouchableOpacity background={TouchableOpacity.SelectableBackground()}
                             onPress={() => this.closeSideBar()} >
                             <Image source={uriButtonBack} style={sideBarStyle.headerNavigatorIcon} />
-                        </TouchableNativeFeedback> */}
+                        </TouchableOpacity> */}
                     </View>
 
                     <View style={sideBarStyle.headerProfile}>
@@ -171,7 +171,7 @@ class SideBar extends BaseComponent {
                     <ScrollView>
                         <List containerStyle={sideBarStyle.listContainer}>
                             {/* thông báo */}
-                            <TouchableNativeFeedback onPress={() => this.navigateNotify()}>
+                            <TouchableOpacity onPress={() => this.navigateNotify()}>
                                 <ListItem
                                     leftIcon={
                                         <Image source={uriAlertIcon} style={sideBarStyle.itemIcon} />
@@ -189,12 +189,12 @@ class SideBar extends BaseComponent {
                                         </View>
                                     }
                                 />
-                            </TouchableNativeFeedback>
+                            </TouchableOpacity>
 
                             {/* văn bản đến */}
                             <Panel title='Văn bản đến' icon={uriInDocxIcon} number={this.props.notifyInfo.inDocxNumber}>
                                 <View style={sideBarStyle.subContainer}>
-                                    <TouchableNativeFeedback onPress={() => this.navigateInDocx(IN_DOCX_NOT_PROCESSED)}>
+                                    <TouchableOpacity onPress={() => this.navigateInDocx(IN_DOCX_NOT_PROCESSED)}>
                                         <ListItem roundAvatar
                                             rightIcon={
                                                 inDocxNotProcessedBadge
@@ -208,9 +208,9 @@ class SideBar extends BaseComponent {
                                                 </View>
                                             }
                                         />
-                                    </TouchableNativeFeedback>
+                                    </TouchableOpacity>
 
-                                    <TouchableNativeFeedback onPress={() => this.navigateInDocx(IN_DOCX_PROCESSED)}>
+                                    <TouchableOpacity onPress={() => this.navigateInDocx(IN_DOCX_PROCESSED)}>
                                         <ListItem roundAvatar
                                             rightIcon={
                                                 inDocxProcessedBadge
@@ -224,9 +224,9 @@ class SideBar extends BaseComponent {
                                                 </View>
                                             }
                                         />
-                                    </TouchableNativeFeedback>
+                                    </TouchableOpacity>
 
-                                    <TouchableNativeFeedback onPress={() => this.navigateInDocx(IN_DOCX_JOIN_PROCESSED)}>
+                                    <TouchableOpacity onPress={() => this.navigateInDocx(IN_DOCX_JOIN_PROCESSED)}>
                                         <ListItem roundAvatar
                                             rightIcon={
                                                 inDoxcJoinProcessedBadge
@@ -240,14 +240,14 @@ class SideBar extends BaseComponent {
                                                 </View>
                                             }
                                         />
-                                    </TouchableNativeFeedback>
+                                    </TouchableOpacity>
                                 </View>
                             </Panel>
 
                             {/* văn bản đi */}
                             <Panel title='Văn bản đi' icon={uriOutDocxIcon} number={this.props.notifyInfo.outDocxNumber}>
                                 <View style={sideBarStyle.subContainer}>
-                                    <TouchableNativeFeedback onPress={() => this.navigateOutDocx(OUT_DOCX_NOT_PROCESSED)}>
+                                    <TouchableOpacity onPress={() => this.navigateOutDocx(OUT_DOCX_NOT_PROCESSED)}>
                                         <ListItem roundAvatar
                                             rightIcon={
                                                 outDocxNotProcessedBadge
@@ -261,9 +261,9 @@ class SideBar extends BaseComponent {
                                                 </View>
                                             }
                                         />
-                                    </TouchableNativeFeedback>
+                                    </TouchableOpacity>
 
-                                    <TouchableNativeFeedback onPress={() => this.navigateOutDocx(OUT_DOCX_JOIN_PROCESSED)}>
+                                    <TouchableOpacity onPress={() => this.navigateOutDocx(OUT_DOCX_JOIN_PROCESSED)}>
                                         <ListItem roundAvatar
                                             rightIcon={
                                                 outDocxJoinProcessedBadge
@@ -277,12 +277,12 @@ class SideBar extends BaseComponent {
                                                 </View>
                                             }
                                         />
-                                    </TouchableNativeFeedback>
+                                    </TouchableOpacity>
                                 </View>
                             </Panel>
 
                             {/* đăng xuất */}
-                            <TouchableNativeFeedback onPress={() => this.logOut()}>
+                            <TouchableOpacity onPress={() => this.logOut()}>
                                 <ListItem roundAvatar
                                     leftIcon={
                                         <Image source={uriButtonSignOut} style={sideBarStyle.itemIcon} />
@@ -297,7 +297,7 @@ class SideBar extends BaseComponent {
                                         </View>
                                     }
                                 />
-                            </TouchableNativeFeedback>
+                            </TouchableOpacity>
                         </List>
                     </ScrollView>
                 </View>

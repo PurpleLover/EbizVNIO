@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import {
     ActivityIndicator, FlatList, Image, View
-    , Text, TextInput, TouchableOpacity, TouchableNativeFeedback
+    , Text, TextInput, TouchableOpacity
 } from 'react-native';
 
 //redux
@@ -39,6 +39,7 @@ const uriAttachmentIcon = require('../../../assets/images/attachment.png');
 
 //styles
 import { listInDocxStyle } from '../../../assets/styles/ListInDocxStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 //redux
 import * as action from '../../../redux/modules/inDocx/inDocxAction';
@@ -137,7 +138,7 @@ class ListInDocxFiltered extends BaseComponent {
 
     //hiển thị danh sách văn bản đến
     renderItem = ({ item }) => (
-        <TouchableNativeFeedback onPress={() => this.navigateToDetail(item.ID)}>
+        <TouchableOpacity onPress={() => this.navigateToDetail(item.ID)}>
             <ListItem leftIcon={
                 <View style={listInDocxStyle.leftContainer}>
                     {
@@ -158,7 +159,7 @@ class ListInDocxFiltered extends BaseComponent {
                     </Text>
                 }
             />
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
     )
 
     //render hình ảnh
@@ -225,7 +226,7 @@ class ListInDocxFiltered extends BaseComponent {
                         onEndReachedThreshold={0.1}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={this.renderItem}
-                        ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={'large'} animating color={this.defaultMainheaderRightIconColor} /> : null}
+                        ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={activityIndicatorSizeResponsive} animating color={this.defaultMainheaderRightIconColor} /> : null}
                         data={this.state.data}
                         ListEmptyComponent={() =>
                             this.state.loading ? null : (

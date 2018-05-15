@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Text, View, Modal, ActivityIndicator, StyleSheet } from 'react-native';
+import { activityIndicatorSizeResponsive } from '../assets/styles/ScalingAndIndicating';
 
 function processingEffect(visible) {
     return (
@@ -12,7 +13,7 @@ function processingEffect(visible) {
             visible={visible}>
             <View style={styles.peContainer}>
                 <View style={styles.peBorderBlock}>
-                    <ActivityIndicator size={'large'} color={'#005aab'} />
+                    <ActivityIndicator size={activityIndicatorSizeResponsive} color={'#005aab'} />
                     <Text style={styles.peText}>
                         ...ĐANG XỬ LÝ
                     </Text>

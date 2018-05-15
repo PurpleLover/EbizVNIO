@@ -20,6 +20,7 @@ import renderIf from 'render-if';
 
 //styles
 import { detailNotifyStyle } from '../../../assets/styles/DetailNotifyStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 class DetailNoitfy extends BaseComponent {
 
@@ -73,7 +74,7 @@ class DetailNoitfy extends BaseComponent {
                         {
                             renderIf(this.props.notifyState.gettingDetailNotify)(
                                 <View style={detailNotifyStyle.body}>
-                                    <ActivityIndicator size={'large'}
+                                    <ActivityIndicator size={activityIndicatorSizeResponsive}
                                         color={this.defaultMainheaderRightIconColor} />
                                 </View>
                             )

@@ -3,6 +3,8 @@ import { ActivityIndicator, FlatList, View, Text } from 'react-native';
 
 import { List, ListItem } from 'react-native-elements';
 
+import { activityIndicatorSizeResponsive } from '../assets/styles/ScalingAndIndicating';
+
 export default class DemoInfiniteScroll extends Component {
     state = {
         data: [],
@@ -39,7 +41,7 @@ export default class DemoInfiniteScroll extends Component {
                         keyExtractor={(x, i) => i}
                         onEndReached={() => this.handleEnd()}
                         onEndReachedThreshold={0.5}
-                        ListFooterComponent={() => this.state.loading ? <ActivityIndicator size="large" animating /> : null}
+                        ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={activityIndicatorSizeResponsive} animating /> : null}
                         renderItem={({ item }) =>
                             <ListItem
                                 roundAvatar

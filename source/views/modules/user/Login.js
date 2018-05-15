@@ -27,7 +27,7 @@ import { EMPTY_STRING, DEFAULT_API_URL } from '../../../common/constant';
  * style
  */
 import { loginStyle } from '../../../assets/styles/LoginStyle';
-
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 //lib
 import renderIf from 'render-if';
 
@@ -188,7 +188,7 @@ class Login extends Component {
                         {
                             renderIf(this.state.loading)(
                                 <View style={loginStyle.indicatorBody}>
-                                    <ActivityIndicator color={'#fff'} size={'large'} />
+                                    <ActivityIndicator color={'#fff'} size={activityIndicatorSizeResponsive} />
                                 </View>
                             )
                         }

@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import {
     ActivityIndicator, FlatList, Image, Text, TextInput,
-    TouchableNativeFeedback, TouchableOpacity, View, Modal
+    TouchableOpacity, View, Modal
 } from 'react-native';
 
 //lib
@@ -26,6 +26,7 @@ import { formatLongText } from '../../../common/utility';
 //styles
 import { listNotifyStyle } from '../../../assets/styles/ListNotifyStyle';
 import { filterStyle } from '../../../assets/styles/FilterStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 //redux
 import * as action from '../../../redux/modules/notify/notifyAction';
@@ -93,7 +94,7 @@ class ListNotify extends BaseComponent {
     //hiển thị từng dòng thông báo
     renderItem = ({ item }) => {
         return (
-            <TouchableNativeFeedback onPress={() => this.navigateToDetail(item.ID, item.IS_READ)}>
+            <TouchableOpacity onPress={() => this.navigateToDetail(item.ID, item.IS_READ)}>
                 <ListItem
                     leftIcon={
                         <View style={[listNotifyStyle.circleTitle, item.IS_READ === true ? listNotifyStyle.circleTitleRead : listNotifyStyle.circleTitleNotRead]}>
@@ -114,7 +115,7 @@ class ListNotify extends BaseComponent {
                         </Text>
                     }
                 />
-            </TouchableNativeFeedback>
+            </TouchableOpacity>
         );
     }
 
@@ -181,7 +182,7 @@ class ListNotify extends BaseComponent {
                             onEndReachedThreshold={0.1}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={this.renderItem}
-                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={'large'} animating color={this.defaultMainheaderRightIconColor} /> : null}
+                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={activityIndicatorSizeResponsive} animating color={this.defaultMainheaderRightIconColor} /> : null}
                             data={this.state.data}
 
                             ListEmptyComponent={() =>

@@ -38,6 +38,7 @@ import {
 
 //styles
 import { workflowMenuStyle } from '../../../assets/styles/WorkflowMenuStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 //effect
 import { processingEffect } from '../../../common/effect';
@@ -144,7 +145,7 @@ class DetailInDocx extends BaseComponent {
                         {
                             renderIf(this.props.gettingDetailInDocx)(
                                 <View style={this.defaultStyle.centerBodyMain}>
-                                    <ActivityIndicator size={'large'}
+                                    <ActivityIndicator size={activityIndicatorSizeResponsive}
                                         color={this.defaultMainheaderRightIconColor} />
                                 </View>
                             )

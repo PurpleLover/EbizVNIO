@@ -5,7 +5,7 @@
  */
 'use strict'
 import React, { Component } from 'react';
-import { ActivityIndicator, FlatList, Image, Text, TextInput, TouchableNativeFeedback, TouchableOpacity, View, Modal } from 'react-native';
+import { ActivityIndicator, FlatList, Image, Text, TextInput, TouchableOpacity, View, Modal } from 'react-native';
 
 //lib
 import _ from 'lodash';
@@ -23,6 +23,7 @@ import * as action from '../../../redux/modules/outDocx/outDocxAction';
 //style
 import { listOutDocxStyle } from '../../../assets/styles/ListOutDocxStyle';
 import { filterStyle } from '../../../assets/styles/FilterStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 //utility
 import { formatLongText } from '../../../common/utility';
@@ -119,7 +120,7 @@ class ListOutDocxFiltered extends BaseComponent {
 
     //hiển thị từng dòng văn bản
     renderItem = ({ item }) => (
-        <TouchableNativeFeedback onPress={() => this.navigateToDetail(item.ID)}>
+        <TouchableOpacity onPress={() => this.navigateToDetail(item.ID)}>
             <ListItem leftIcon={
                 <View style={listOutDocxStyle.leftContainer}>
                     {
@@ -140,7 +141,7 @@ class ListOutDocxFiltered extends BaseComponent {
                     </Text>
                 }
             />
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
     )
 
     render() {
@@ -207,7 +208,7 @@ class ListOutDocxFiltered extends BaseComponent {
                             onEndReachedThreshold={0.1}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={this.renderItem}
-                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={'large'} animating color={this.defaultMainheaderRightIconColor} /> : null}
+                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={activityIndicatorSizeResponsive} animating color={this.defaultMainheaderRightIconColor} /> : null}
                             data={this.state.data}
 
                             ListEmptyComponent={() =>

@@ -38,6 +38,7 @@ import {
 import { workflowMenuStyle } from '../../../assets/styles/WorkflowMenuStyle';
 
 import { processingEffect } from '../../../common/effect';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 class DetailOutDocx extends BaseComponent {
 
@@ -138,7 +139,7 @@ class DetailOutDocx extends BaseComponent {
                         {
                             renderIf(this.props.gettingDetailOutDocx)(
                                 <View style={this.defaultStyle.centerBodyMain}>
-                                    <ActivityIndicator size={'large'}
+                                    <ActivityIndicator size={activityIndicatorSizeResponsive}
                                         color={this.defaultMainheaderRightIconColor} />
                                 </View>
                             )

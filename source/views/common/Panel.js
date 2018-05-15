@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react';
-import { Animated, View, Text, TouchableNativeFeedback, StyleSheet, Image } from 'react-native';
+import { Animated, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 import { ListItem, Badge } from 'react-native-elements';
 import { sideBarStyle } from '../../assets/styles/SideBarStyle';
@@ -63,7 +63,7 @@ export default class Panel extends Component {
         return (
             <Animated.View style={[styles.container, { height: this.state.animation }]}>
                 <View style={styles.titleContainer} onLayout={this.setMinHeight.bind(this)}>
-                    <TouchableNativeFeedback onPress={() => this.toggle()}>
+                    <TouchableOpacity onPress={() => this.toggle()}>
                         <ListItem
                             containerStyle={sideBarStyle.itemContainer}
                             leftIcon={
@@ -81,7 +81,7 @@ export default class Panel extends Component {
                                     <Image source={icon} style={sideBarStyle.toggleIcon} />
                                 </View>
                             } />
-                    </TouchableNativeFeedback>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.body} onLayout={this.setMaxHeight.bind(this)}>

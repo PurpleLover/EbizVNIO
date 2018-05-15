@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import {
     AsyncStorage, ActivityIndicator, FlatList, Image, Text, TextInput,
-    TouchableNativeFeedback, TouchableOpacity, View, Modal
+    TouchableOpacity, View, Modal
 } from 'react-native';
 
 //lib
@@ -27,6 +27,7 @@ import { formatLongText } from '../../../common/utility';
 //style
 import { listInDocxStyle } from '../../../assets/styles/ListInDocxStyle'
 import { filterStyle } from '../../../assets/styles/FilterStyle';
+import { activityIndicatorSizeResponsive } from '../../../assets/styles/ScalingAndIndicating';
 
 //thunk
 import * as userThunk from '../../../redux/modules/user/userThunk';
@@ -120,7 +121,7 @@ class ListInDocxNotProcessed extends BaseComponent {
 
     //hiển thị danh sách văn bản đến
     renderItem = ({ item }) => (
-        <TouchableNativeFeedback onPress={() => this.navigateToDetail(item.ID)}>
+        <TouchableOpacity onPress={() => this.navigateToDetail(item.ID)}>
             <ListItem leftIcon={
                 <View style={listInDocxStyle.leftContainer}>
                     {
@@ -141,7 +142,7 @@ class ListInDocxNotProcessed extends BaseComponent {
                     </Text>
                 }
             />
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
     )
 
     //hiển thị màn hình
@@ -185,7 +186,7 @@ class ListInDocxNotProcessed extends BaseComponent {
                             onEndReachedThreshold={0.1}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={this.renderItem}
-                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={'large'} animating color={this.defaultMainheaderRightIconColor} /> : null}
+                            ListFooterComponent={() => this.state.loading ? <ActivityIndicator size={activityIndicatorSizeResponsive} animating color={this.defaultMainheaderRightIconColor} /> : null}
                             data={this.state.data}
 
                             ListEmptyComponent={() =>

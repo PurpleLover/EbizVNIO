@@ -20,7 +20,7 @@
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-swiper": "^1.5.13",
     "react-native-timeline-listview": "^0.2.3",
-    "react-navigation": "^2.0.1",
+    "react-navigation": "^1.5.11",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",

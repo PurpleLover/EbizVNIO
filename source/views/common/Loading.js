@@ -21,6 +21,7 @@ import * as thunk from '../../redux/modules/user/userThunk';
 
 //styles
 import { loadingStyle } from '../../assets/styles/LoadingStyle';
+import { activityIndicatorSizeResponsive } from '../../assets/styles/ScalingAndIndicating';
 import * as util from 'lodash';
 
 //images
@@ -33,7 +34,7 @@ class Loading extends Component {
         this.state = {
             userInfo: {},
             hasLogin: false,
-            notifyCount:0,
+            notifyCount: 0,
             loading: false
         }
     }
@@ -84,7 +85,7 @@ class Loading extends Component {
                     </View>
 
                     <View style={loadingStyle.body}>
-        <ActivityIndicator color={ (util.isNumber(this.state.notifyCount) && this.state.notifyCount > 0 ) ? '#f00' : '#fff'} size={'large'}/>
+                        <ActivityIndicator color={(util.isNumber(this.state.notifyCount) && this.state.notifyCount > 0) ? '#f00' : '#fff'} size={activityIndicatorSizeResponsive} />
                         <Text>
                             {this.state.result}
                         </Text>
