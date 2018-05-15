@@ -19,7 +19,8 @@ export default class Panel extends Component {
             icon: props.icon,
             title: props.title,
             expanded: false,
-            animation: new Animated.Value(60)
+            animation: new Animated.Value(60),
+            isShow: false,
         }
     }
 
@@ -28,7 +29,8 @@ export default class Panel extends Component {
         const finalValue = this.state.expanded ? this.state.minHeight : (this.state.minHeight + this.state.maxHeight);
 
         this.setState({
-            expanded: !this.state.expanded
+            expanded: !this.state.expanded,
+            isShow: !this.state.isShow,
         });
 
         this.state.animation.setValue(initialValue);
@@ -60,6 +62,8 @@ export default class Panel extends Component {
             containerStyle={sideBarStyle.badgeContainer} textStyle={sideBarStyle.badgeText} />) :
             (<Text />);
 
+        const thisChildren = this.state.isShow ? this.props.children : null;
+
         return (
             <Animated.View style={[styles.container, { height: this.state.animation }]}>
                 <View style={styles.titleContainer} onLayout={this.setMinHeight.bind(this)}>
@@ -83,9 +87,15 @@ export default class Panel extends Component {
                             } />
                     </TouchableOpacity>
                 </View>
-
-                <View style={styles.body} onLayout={this.setMaxHeight.bind(this)}>
-                    {this.props.children}
+                {/*
+                  * thisFunction
+                  * onLayout={this.setMaxHeight.bind(this)}
+                */}
+                <View 
+                    style={styles.body} 
+                    
+                >
+                    {thisChildren}
                 </View>
             </Animated.View>
         );
@@ -98,6 +108,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     }, titleContainer: {
     }, body: {
-
+        //backgroundColor: 'red',
     }
 });
