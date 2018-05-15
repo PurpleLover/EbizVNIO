@@ -61,7 +61,9 @@ class Login extends Component {
         // this._keyboardDidHide = this._keyboardDidHide.bind(this);
         // this._keyboardDidShow = this._keyboardDidShow.bind(this);
     }
-
+    _next = () => {
+        this._passwordInput && this._passwordInput.focus();
+    }
     //==> ?
     _keyboardDidShow() {
         // this.setState({
@@ -92,21 +94,21 @@ class Login extends Component {
                 passWord: this.state.password
             })
         }).then((response) => response.json())
-        .then((responseJson) => {
-            return responseJson;
-        }).catch(err => {
-            alert(err);
-        })
+            .then((responseJson) => {
+                return responseJson;
+            }).catch(err => {
+                alert(err);
+            })
 
-        if(!_.isNull(result)){
+        if (!_.isNull(result)) {
             this.setState({
                 loading: false
             });
 
-            AsyncStorage.setItem('userInfo', JSON.stringify(result)).then(()=> {
+            AsyncStorage.setItem('userInfo', JSON.stringify(result)).then(() => {
                 this.props.navigation.navigate('ListInDocxNotProcessedScreen');
             });
-            
+
         }
 
         // return false;
@@ -203,14 +205,18 @@ class Login extends Component {
                                             <View style={loginStyle.inputIconContainer}>
                                                 <Image source={uriUserNameIcon} style={loginStyle.inputIcon} />
                                             </View>
-                                            <TextInput style={loginStyle.input}
+                                            <TextInput
+                                                style={loginStyle.input}
                                                 onChangeText={(value) => this.setState({
                                                     userName: value
                                                 })}
                                                 defaultValue={this.state.userName}
                                                 underlineColorAndroid='transparent'
                                                 placeholder='Tên đăng nhập'
-                                                placeholderTextColor='#999' />
+                                                placeholderTextColor='#999'
+                                                returnKeyType='next'
+                                                onSubmitEditing={this._next}
+                                            />
                                         </View>
 
                                         {/* mật khẩu */}
@@ -218,14 +224,18 @@ class Login extends Component {
                                             <View style={loginStyle.inputIconContainer}>
                                                 <Image source={uriPasswordIcon} style={loginStyle.inputIcon} />
                                             </View>
-                                            <TextInput style={loginStyle.input}
+                                            <TextInput 
+                                                style={loginStyle.input}
                                                 secureTextEntry={true}
                                                 onChangeText={(value) => this.setState({
                                                     password: value
                                                 })}
                                                 defaultValue={this.state.passWord}
                                                 underlineColorAndroid='transparent' placeholder='Mật khẩu'
-                                                placeholderTextColor='#999' />
+                                                placeholderTextColor='#999' 
+                                                returnKeyType='done'
+                                                ref={ref => {this._passwordInput=ref}}    
+                                            />
                                         </View>
                                     </View>
 

@@ -220,12 +220,15 @@ class ListNotify extends BaseComponent {
                             }
                             centerComponent={
                                 <View style={[this.defaultStyle.headerMainComponent, { justifyContent: 'center' }]}>
-                                    <TextInput placeholder="Tiêu đề hoặc tên người gửi"
+                                    <TextInput 
+                                        placeholder="Tiêu đề hoặc tên người gửi"
                                         value={this.state.filterValue}
                                         onChangeText={(filterValue) => this.setState({ filterValue })}
                                         onSubmitEditing={() => this.onFilter()}
                                         style={filterStyle.filterInput}
-                                        placeholderTextColor={'#888'} />
+                                        placeholderTextColor={'#888'} 
+                                        
+                                    />
                                 </View>
                             }
                             rightComponent={
