@@ -78,8 +78,8 @@ export default class BaseComponent extends Component {
 
     //hiển thị menu bên tay trái
     showSideBar = () => {
-        // this.props.navigation.navigate('DrawerOpen');
-        this.props.navigation.openDrawer();
+        this.props.navigation.navigate('DrawerOpen');
+        //this.props.navigation.openDrawer();
     }
 
     //ẩn menu bên tay trái
